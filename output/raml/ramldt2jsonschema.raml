@@ -1,0 +1,44 @@
+#%RAML 1.0 Library
+types:
+  Cat:
+    type: object
+    properties:
+      description: nil
+      proscons: array
+      dt_of_birth?: datetime-only
+      address: string
+      habits?: string
+      breed:
+        type: string
+        pattern: '\w{3,}'
+      age:
+        type: number
+        minimum: 1
+        maximum: 50
+      siblings: array
+      time_of_birth: time-only
+      additionalData:
+        type: object
+        properties:
+          weight: number
+        additionalProperties: true
+      addition_date:
+        type: datetime
+        format: rfc2616
+      name:
+        type: string
+        description: Cat name
+      removal_date:
+        type: datetime
+        format: rfc3339
+      ratingHistory?: array
+      photo:
+        type: file
+        fileTypes:
+          - image/jpeg
+          - image/png
+      year_of_birth: date-only
+      rating: integer
+    additionalProperties: false
+    displayName: Complex Cat Schema
+
