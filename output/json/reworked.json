@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/Cat",
+  "definitions": {
+    "Cat": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 50,
+      "additionalProperties": false,
+      "discriminator": "breed",
+      "discriminatorValue": "CatOne",
+      "required": [
+        "additionalData",
+        "breed",
+        "character",
+        "parents",
+        "name",
+        "address",
+        "year_of_birth",
+        "addition_date",
+        "photo",
+        "siblings",
+        "removal_date",
+        "age",
+        "rating",
+        "time_of_birth",
+        "city",
+        "proscons",
+        "description",
+        "ratingHistory"
+      ],
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "proscons": {
+          "anyOf": [
+            {
+              "type": "array",
+              "uniqueItems": false,
+              "minItems": 1,
+              "maxItems": 100,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            }
+          ]
+        },
+        "name": {
+          "example": "fluffy",
+          "title": "Cat",
+          "description": "Cat name",
+          "type": "string",
+          "amazing": true,
+          "default": "regular cat",
+          "xml": {
+            "attribute": false,
+            "wrapped": true,
+            "name": "cat",
+            "prefix": "animal"
+          }
+        },
+        "breed": {
+          "pattern": "^\\w{3,}$",
+          "examples": {
+            "dogone": "CatOne",
+            "dogtwo": "CatTwo"
+          },
+          "enum": [
+            "CatOne",
+            "CatTwo",
+            "CatThree"
+          ],
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "rating": {
+          "type": "integer",
+          "multipleOf": 5,
+          "example": {
+            "displayName": "Cat's rating",
+            "description": "Rating of cat's awesomeness",
+            "strict": false,
+            "value": 50
+          }
+        },
+        "year_of_birth": {
+          "type": "string",
+          "format": "date"
+        },
+        "time_of_birth": {
+          "type": "string",
+          "format": "time"
+        },
+        "dt_of_birth": {
+          "type": "string",
+          "format": "date-time-only"
+        },
+        "addition_date": {
+          "type": "string",
+          "format": "rfc2616"
+        },
+        "removal_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "photo": {
+          "type": "string",
+          "fileTypes": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "minLength": 1,
+          "maxLength": 307200,
+          "media": {
+            "contentEncoding": "binary",
+            "anyOf": [
+              {
+                "mediaType": "image/jpeg"
+              },
+              {
+                "mediaType": "image/png"
+              }
+            ]
+          }
+        },
+        "description": {
+          "type": "null"
+        },
+        "habits": {
+          "type": "string"
+        },
+        "character": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "siblings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "parents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "fluffy",
+            "title": "Cat",
+            "description": "Cat name",
+            "default": "regular cat",
+            "xml": {
+              "attribute": false,
+              "wrapped": true,
+              "name": "cat",
+              "prefix": "animal"
+            },
+            "facets": {
+              "amazing": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "ratingHistory": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "additionalData": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "weight"
+          ],
+          "properties": {
+            "weight": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}
