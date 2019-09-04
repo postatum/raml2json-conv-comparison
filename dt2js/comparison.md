@@ -24,7 +24,6 @@ Input: `complex_cat.raml#Cat`
 - number with "format: int32" not changed
 + number with "format: int32" converted to type: integer
 
-
 - named  "examples" converted to array without examples names
 + named "examples" converted to an object with names as keys and examples as values
 
@@ -37,4 +36,7 @@ Input: `complex_cat.raml#Cat`
 
 - converted example "displayName" to "title"
 + keeps the "displayName" property
+
+- pattern regex kept as is
++ pattern regex wrapped in `^...$`
 ```
