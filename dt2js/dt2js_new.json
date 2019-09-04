@@ -122,10 +122,6 @@
         },
         "photo": {
           "type": "string",
-          "fileTypes": [
-            "image/jpeg",
-            "image/png"
-          ],
           "minLength": 1,
           "maxLength": 307200,
           "media": {
