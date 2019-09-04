@@ -8,7 +8,7 @@
       "maxProperties": 50,
       "additionalProperties": false,
       "discriminator": "breed",
-      "x-amf-discriminatorValue": "CatOne",
+      "discriminatorValue": "CatOne",
       "required": [
         "additionalData",
         "breed",
@@ -63,7 +63,7 @@
           "title": "Cat",
           "description": "Cat name",
           "type": "string",
-          "x-amf-facet-amazing": true,
+          "amazing": true,
           "default": "regular cat",
           "xml": {
             "attribute": false,
@@ -74,7 +74,7 @@
         },
         "breed": {
           "pattern": "^\\w{3,}$",
-          "x-amf-examples": {
+          "examples": {
             "dogone": "CatOne",
             "dogtwo": "CatTwo"
           },
@@ -121,13 +121,24 @@
           "format": "date-time"
         },
         "photo": {
-          "type": "file",
-          "x-amf-fileTypes": [
+          "type": "string",
+          "fileTypes": [
             "image/jpeg",
             "image/png"
           ],
           "minLength": 1,
-          "maxLength": 307200
+          "maxLength": 307200,
+          "media": {
+            "binaryEncoding": "binary",
+            "anyOf": [
+              {
+                "mediaType": "image/jpeg"
+              },
+              {
+                "mediaType": "image/png"
+              }
+            ]
+          }
         },
         "description": {
           "type": "null"
@@ -165,7 +176,7 @@
               "name": "cat",
               "prefix": "animal"
             },
-            "x-amf-facets": {
+            "facets": {
               "amazing": {
                 "type": "boolean"
               }
@@ -201,4 +212,3 @@
     }
   }
 }
-
