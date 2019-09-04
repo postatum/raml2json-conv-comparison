@@ -2,6 +2,11 @@
 
 Input: `complex_cat.raml#Cat`
 
+```diff
+- old
++ new
+```
+
 ## Structural differences
 
 ```diff
